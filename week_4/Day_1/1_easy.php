@@ -21,6 +21,28 @@
     ///////////////////////////
     // Put your code here!
     ///////////////////////////
+    class Rectangle{
+        public $width;
+        public $height;
+        
+        function __construct($width, $height){
+            
+            $this->width = $width;
+            $this->height = $height;
+        }
+        
+        function getArea(){
+            return ($this->width*$this->height);
+        }
+        
+        function getPerimeter(){
+            return (2*($this->width)) + (2*($this->height));
+        }
+        
+        function isSquare(){
+            return($this->width == $this->height);
+        }
+    }
 
 
     $width = 160;

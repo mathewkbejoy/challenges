@@ -21,12 +21,18 @@
                 "8" => 8, "9" => 9, "10" => 10, "Jack" => 11, "Queen" => 12, "King" => 13
             );
             $deck = array();
-
-
+            
+            foreach($suits as $suit){
+                foreach($faces as $face => $value){
+                    $deck[] = array($suit => array($face => $value));
+                }
+            }
             // print here
+            print_r($deck);
+            
 
 
-            /*
+            
 
         ?>
 

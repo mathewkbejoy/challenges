@@ -25,6 +25,8 @@
             ];
 
           // code goes here...
+          asort($unOrderedArray);
+          var_dump($unOrderedArray);
           ?>
         </p>
   </body>

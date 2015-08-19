@@ -22,6 +22,18 @@
     ///////////////////////////
     // Put your code here!
     ///////////////////////////
+    class Item{
+        public $name;
+        public $price;
+        function __construct($name, $price){
+            $this->name = $name;
+            $this->price = $price;
+        }
+    }
+    
+    class ShoppingCart{
+        
+    }
 
 
     $cart = new ShoppingCart();

@@ -28,8 +28,17 @@
           	 'September',
           	 'November'
           	];
+          	
+          	$monthArray = ["April", "September", "December"];
 
           	// code goes here ...
+          	foreach($monthArray as $month)
+          	{
+          	    if(!in_array($month, $monthExcludeArray)){
+          	        echo $month;
+          	    }
+          	    
+          	}
           ?>
         </p>
 	</body>

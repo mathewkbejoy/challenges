@@ -3,6 +3,14 @@
      * Write a function called "add" that adds all the numbers in an array and
      * returns the result.
      */
+     
+     function add($array){
+         $result;
+         foreach($array as $val){
+             $result += $val;
+         }
+         return $result;
+     }
     
 ?>
 <!DOCTYPE html>

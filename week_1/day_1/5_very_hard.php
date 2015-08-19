@@ -16,6 +16,40 @@
     array('name' => 'Package 6', 'price' => 10.99),
     array('name' => 'Package 7', 'price' => 11.00),
   );
+  
+  $priceArray = array();
+  foreach($packagesArray as $k => $p){
+    $priceArray[] = $packagesArray[$k]["price"];
+  }
+  
+  sort($priceArray);
+  $notInOrder = true;
+  
+  while($notInOrder){
+    $count = 0;
+    
+    //checks if the 1st element is greater than the 2nd. if so they switch places.
+    for($i = 0; $i< count($packagesArray)-1; $i++){
+      if($packagesArray[$i]["price"] > $packagesArray[$i+1]["price"]){ 
+        $temp = $packagesArray[$i]; 
+        $packagesArray[$i] = $packagesArray[$i+1];
+        $packagesArray[$i+1] = $temp; 
+      }
+    }
+    
+    //cross check with $priceArray to see if its in order
+    foreach($packagesArray as $key => $items){
+      if($packagesArray[$key]["price"] == $priceArray[$key]){
+        $count++;
+      }
+    }
+    
+    //if it is we exit the loop.
+    if($count == count($packagesArray)){
+      $notInOrder = false;
+    }
+  }
+  
 ?>
 <!DOCTYPE html>
 <html>

@@ -14,6 +14,11 @@
         <?php
 
             // code goes here...
+            $result = 0;
+            for($i = 0; $i<= 20; $i++){
+                $result = $result + $i;
+            }
+            echo $result;
 
 
         ?>
