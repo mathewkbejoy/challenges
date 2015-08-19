@@ -21,7 +21,7 @@ This instructions below cover how to work with this repo including how to pull i
 **When coding always make sure you are on your working branch**
 
 ####Pulling in new challenges####
-1. make sure you are on the master branch by typing **git checkout master** from the terminal in Cloud 9
+1. Make sure you are on the master branch by typing **git checkout master** from the terminal in Cloud 9
 2. Run **git fetch new-challenges to pull down the updated challenges
 3. Run **git merge new-challenges/master** to merge the updated challenges into the repo associated with Cloud 9
 4. Checkout your working branch by running **git checkout {username}** (username should be first initial and last name e.g. eschwartz)
