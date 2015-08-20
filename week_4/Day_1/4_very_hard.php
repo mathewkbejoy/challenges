@@ -42,15 +42,46 @@
      * This site will help you to know which zip codes belong to which states:
      * @see https://smartystreets.com/articles/zip-codes-101
      */
-
-
     ///////////////////////////
     // Put your code here!
     ///////////////////////////
+    
+    class CamcostPricing{
+        //creates an array of all the possible price
+        private $tv_packages = array(
+                        "Rest_of_US"=>array("Budget" => 19.99, "Regular" => 39.99),
+                        "OR_UT"=>array("Budget" => 19.99, "Regular" => 39.99, "Couch Potato" => 79.99));
+        private $net_packages = array(
+                        "Rest_of_US" => array("SlowNet" => 24.99,"FastNet" => 54.99),
+                        "NC_SC" => array("SlowNet" => 29.99,"FastNet" => 59.99));
+        
+        function getBundlesByZip($zip_code){
+            $possible_bundles;
+            //gets the state by looking at the first 2 number
+            $state = intval(substr(strval($zip_code),0,2));
+            $state_special_tv = "Rest_of_US";
+            $state_special_net = "Rest_of_US";
+            
+            //checks to see if we need to get into the special prices
+            if(($state == 97) || ($state == 84)){
+                $state_special_tv = "OR_UT";
+            }
+            if(($state >= 27) && ($state <= 29)){
+                $state_special_net = "NC_SC";
+            }
+            
+            foreach($this->tv_packages[$state_special_tv] as $tv_package => $tv_price){
+                foreach($this->net_packages[$state_special_net] as $net_package => $net_price){
+                    $possible_bundles["$tv_package & $net_package"] = $tv_price + $net_price; 
+                }
+            }
+            return $possible_bundles;
+        }
+    }
+    
 
-
-    $pricing = new CamcostPricing;
-
+     $pricing = new CamcostPricing;
+    
     $zip = '28277';
     $bundles = $pricing->getBundlesByZip($zip);
     echo "<h3>Camcost Bundles for customers in $zip</h3>";

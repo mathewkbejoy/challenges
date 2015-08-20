@@ -21,10 +21,88 @@
      * Bonus points: Can you implement a "removeItem" method on your shopping cart class?
      */
 
-
     ///////////////////////////
     // Put your code here!
     ///////////////////////////
+    
+    class Book{
+        public $name;
+        public $price;
+        private $tax = 0;
+        function __construct($name, $price){
+            $this->name = $name;
+            $this->price = $price;
+        }
+        
+        function getTax(){
+            return $this->tax;
+        }
+         
+     }
+     
+     class DVD{
+        public $name;
+        public $price;
+        private $tax = .05;
+        function __construct($name, $price){
+            $this->name = $name;
+            $this->price = $price;
+        }
+        
+        function getTax(){
+            return $this->tax;
+        }
+         
+     }
+     
+     class VideoGame{
+        public $name;
+        public $price;
+        private $tax = .10;
+        function __construct($name, $price){
+            $this->name = $name;
+            $this->price = $price;
+        }
+        
+        function getTax(){
+            return $this->tax;
+        }
+         
+     }
+     
+     class ShoppingCart{
+        
+        public $items;
+        protected $total_before_tax;
+        protected $total_after_tax;
+        protected $tax;
+        
+        function addItem($item){
+            $this->items[] = $item;
+        }
+        
+        function getCostBeforeTax(){
+            foreach($this->items as $item){
+                $this->total_before_tax += $item->price;
+            }
+            return $this->total_before_tax;
+        }
+        
+        function getTaxAmount(){
+            foreach($this->items as $item){
+                $this->tax += ($item->price)*($item->getTax());
+            }
+            return $this->tax;
+        }
+        
+        function getCostAfterTax(){
+            $this->total_after_tax = ($this->total_before_tax)+($this->tax);
+            return $this->total_after_tax;
+        }
+        
+        
+        
+    }
 
 
     $cart = new ShoppingCart();
