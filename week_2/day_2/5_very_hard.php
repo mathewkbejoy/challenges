@@ -17,7 +17,7 @@
          * @see http://php.net/manual/en/function.usort.php
          */
          
-          function score($name){
+          function score(&$name){
             $name = ucwords(strtolower(trim($name)));  
             $posA = stripos($name, 'a');
             $parts = explode(' ', $name);
@@ -27,9 +27,7 @@
             return $score;
           }   
           
-           function greater($a, $b){
-            return ($a > $b);
-            }
+           
 
 
         $names = [
@@ -42,20 +40,16 @@
         $names[] = 'Bob ArK';
         $names[] = 'Derek WaLL';
         
-
+       usort($names,function (&$a,&$b){
+                $score_a = score($a);
+                $score_b = score($b);
+                return($score_b - $score_a);
+            });
        
-      for($i = 0; $i <= count($names); $i++){
-          echo $names[$i];
-          
-          //$name_scores[] = score($names[$i]);
-          //var_dump(greater(score($names[$i-1]),score($names[$i])));
-          //usort($names,greater(score($names[$i-1]),score($names[$i])));
-           
-      }
-      echo score($names[3]);
-        //print_r($name_scores);
-        //print_r($names)
-
+       
+       var_dump($names);
+        
+        
 
         ?>
 

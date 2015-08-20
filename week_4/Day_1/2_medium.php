@@ -33,6 +33,32 @@
     
     class ShoppingCart{
         
+        public $items;
+        protected $total_before_tax;
+        protected $total_after_tax;
+        protected $tax;
+        
+        function addItem($item){
+            $this->items[] = $item;
+        }
+        
+        function getCostBeforeTax(){
+            foreach($this->items as $item){
+                $this->total_before_tax += $item->price;
+            }
+            return $this->total_before_tax;
+        }
+        
+        function getTaxAmount(){
+            $this->tax = ($this->total_before_tax)*(.10);
+            return $this->tax;
+        }
+        
+        function getCostAfterTax(){
+            $this->total_after_tax = ($this->total_before_tax)+($this->tax);
+            return $this->total_after_tax;
+        }
+        
     }
 
 
@@ -41,6 +67,8 @@
     $cart->addItem(new Item('Expensive Book', 24.99));
     $cart->addItem(new Item('Movie', 12.99));
     $cart->addItem(new Item('Video Game', 59.99));
+    
+    $cart->getCostBeforeTax();
 
     echo "<p>Total cost before tax: \${$cart->getCostBeforeTax()}</p>";
     echo "<p>Tax amount: \${$cart->getTaxAmount()}</p>";
