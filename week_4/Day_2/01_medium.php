@@ -41,7 +41,6 @@
          * 8. Pass your ShoppingCart into the ItemDescriber outputDescription method from Exercise 4 and see
          * how it will also output the description of your cart, just like it did your individual products
          */
-
         ///////////////////////////
         // Put your code here!
         ///////////////////////////
