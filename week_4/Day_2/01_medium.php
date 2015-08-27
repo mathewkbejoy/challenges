@@ -4,7 +4,7 @@
   </head>
   <body>
     <p>
-        <?
+        <?php
         /**
          * So we have our products, but what are we going to do with them.
          *
@@ -44,7 +44,257 @@
         ///////////////////////////
         // Put your code here!
         ///////////////////////////
-        ?>
+        
+        interface Describable{
+          public function provideDescription();
+        }
+        
+        abstract class Product implements Describable {
+            protected $name;
+            protected $brand;
+            protected $price;
+            
+            function __construct($name,$brand,$price){
+              $this->name = $name;
+              $this->brand = $brand;
+              $this->price = $price;
+            }
+            
+            public function getName(){
+              if(empty($this->name)){
+                throw new Exception("Empty value found!");
+              }else{
+                return $this->name;
+              }
+            }
+            
+            public function getBrand(){
+              if(empty($this->brand)){
+                throw new Exception("Empty value found!");
+              }else{
+                return $this->brand;
+              }
+            }
+            
+            public function getPrice(){
+              if(!empty($this->price)){
+                if(is_numeric($this->price)) {
+                  return $this->price;
+                } else {
+                  throw new Exception("Invalid price found!");
+                }
+              }else{
+                
+                throw new Exception("Empty value found!");
+              }
+            }
+            
+            abstract function provideDescriptionForProductType();
+            
+            public function provideDescription(){
+              return  $this->provideDescriptionForProductType();
+              
+            }
+        }
+        
+        class Clothing extends Product{
+            protected $size;
+            protected $color; 
+            protected $gender;
+            protected $type;
+            
+            function __construct($name, $brand, $price, $size, $color, $type, $gender){
+              parent::__construct($name, $brand, $price);
+              $this->size = $size;
+              $this->color = $color;
+              $this->gender = $gender;
+              $this->type = $type;
+            }
+            
+            public function getSize(){
+              if(empty($this->size)){
+                throw new Exception("Empty value found!");
+              }else{
+                return $this->size;
+              }
+            }
+            
+            public function getColor(){
+              $allowedColors = array('Red', 'Blue', 'Green', 'Black', 'White', 'Yellow');
+              if(!empty($this->color)){
+                if(in_array($this->color, $allowedColors)){
+                     return $this->color;
+                }
+                else{
+                  throw new Exception("Invalid color");
+                }
+                
+              }else{
+                throw new Exception("Empty value found!");
+              }
+            }
+            
+            public function getGender(){
+              if(empty($this->gender)){
+                throw new Exception("Empty value found!");
+              }else{
+                return $this->gender;
+              }
+            }
+            
+            public function getType(){
+              if(empty($this->type)){
+                throw new Exception("Empty value found!");
+              }else{
+                return $this->type;
+              }
+            }
+            
+            public function provideDescriptionForProductType(){
+              try{
+                return "This is an article of clothing. It is a ".$this->getBrand(). $this->getColor(). $this->getGender().
+                     $this->getType()." of size ".$this->getSize().". It costs ".$this->getPrice()."<br/>";
+                
+              }catch(Exception $e){
+                echo $e->getMessage();
+              }
+            }
+        }
+        
+        class Television extends Product{
+          
+            protected $displayType;
+            protected $size;
+            function __construct($name, $brand, $price, $displayType, $size){
+              parent::__construct($name, $brand, $price);
+              $this->displayType = $displayType;
+              $this->size = $size;
+            }
+            
+            public function getDisplayType(){
+              if(empty($this->displayType)){
+                throw new Exception("Empty value found!");
+              }else{
+                return $this->displayType;
+              }
+            }
+            
+            public function getSize(){
+              if(empty($this->size)){
+                throw new Exception("Empty value found!");
+              }else{
+                return $this->size;
+              }
+            }
+            
+            public function provideDescriptionForProductType(){
+              try{
+                return "This is a ".$this->getSize()." " .$this->getBrand()." ".$this->getDisplayType()." Television. For $ ".$this->getPrice();
+              }catch(Exception $e){
+                echo $e->getMessage();
+              }
+              
+            }
+        }
+        
+        class ItemDescriber{
+          public function outputDescription($product){
+            if($product instanceof Describable){
+              return $product->provideDescription();
+            }else{
+              throw new Exception("Invalid type!");
+            }
+          }
+        }
+        
+        class ShoppingCart implements Describable{
+          protected $productsArray;
+          protected $totalPrice;
+          
+          public function addProduct($product){
+            if(($product instanceof Clothing) || ($product instanceof Television)){
+              $this->productsArray[] = $product;
+            }else{
+              throw new Exception("Sorry, we don't carry that item.");
+            }
+          }
+          
+          public function removeOne($product){
+            if(in_array($product, $this->productsArray)){
+              unset($this->productsArray[array_search($product, $this->productsArray)]);
+              $this->productsArray = array_values($this->productsArray);
+            }else{
+              throw new Exception("This item is not in your cart.");
+            }
+          }
+          
+          public function removeAll($product){
+            foreach($this->productsArray as $item){
+              if($product instanceof $item){
+                try{
+                  $this->removeOne($item);
+                }catch(Exception $E){
+                  echo $E->getMessage();
+                }
+              }else{
+                throw new Exception("This product is not in your cart.");
+              }
+            }
+          }
+          //$price variable is used and unset here because if the same object
+          //calls this function twice it won't double the actual price. 
+          public function getTotalPrice(){
+            foreach($this->productsArray as $product){
+              $price += $product->getPrice();
+            }
+            $this->totalPrice = $price;
+            unset($price);
+            return $this->totalPrice;
+          }
+          
+          public function getAllProducts(){
+            return $this->productsArray;
+          }
+          
+          public function findProductByName($name){
+            foreach($this->productsArray as $key => $product){
+              $names[] = $this->productsArray[$key]->getName();
+            }
+            if(in_array($name,$names)){
+                return $this->productsArray[array_search($name, $names)];
+              }else{
+                throw new Exception("Can't find the product");
+              }
+              //used here to avoid duplicate copy
+              unset($names);
+          }
+          
+          public function provideDescription(){
+            echo "Your cart contains the following items: <br/>";
+            foreach($this->productsArray as $product){
+              echo $product->getName()." for $ ".$product->getPrice()."<br/>";
+            }
+            echo "Item Count: ".count($this->productsArray)." Total price: $".$this->getTotalPrice()."<br/>";
+          }
+        }
+        
+        $cloth = new Clothing("Headband","Nike",9, "Medium" ,"Red", "Headgear","Neutral");
+        $tv = new Television("Giant TV","Kramerica",3900.90,"LED","100 inches");
+        $cart = new ShoppingCart();
+        $prodDescriber = new ItemDescriber();
+        $cart->addProduct($cloth);
+        $cart->addProduct($tv);
+        $cart->provideDescription();
+        echo "Total Price: $".$cart->getTotalPrice()."<br/>";
+        try{
+          $cart->removeOne($cloth);
+          var_dump($cart->findProductByName("Giant TV"));
+          $prodDescriber->outputDescription($cart);
+        }catch(Exception $E){
+          echo $E->getMessage();
+        }
+        
+      ?>
     </p>
   </body>
 </html>
