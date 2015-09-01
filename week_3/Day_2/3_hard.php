@@ -97,8 +97,8 @@
                   for($p = 0; $p < $num_players - 1; $p++){
                       if($play[$p] > $play[$p+1]){ //checks to see who got higher value
                           if(is_null($round_winners)){//checks to see if $round_winner is empty
-                              $round_winners = array($p => $play[$p]); // if so it gets added the value and key from $play[$p]
-                          }else{//if not, this loop checks to see if the value in $round_winners is already higher or not
+                              $round_winners = array($p => $play[$p]); // if so it gets added the value and key from $play[$p] were $p is the player X
+                          }else{//if not, this loop checks to see if the value in $round_winners for this round is already higher or not
                               foreach($round_winners as $win_Val){ 
                                   if(is_int($win_Val)){//checks to see $round_winners have a "draw" string
                                       if($play[$p] > $win_Val){
@@ -106,7 +106,7 @@
                                       }
                                     }
                                 }
-                          }
+                            }
                         }elseif($play[$p] < $play[$p+1]){ //same deal here
                             if(is_null($round_winners)){
                                 $round_winners = array($p+1 => $play[$p+1]);
