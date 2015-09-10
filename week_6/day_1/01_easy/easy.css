@@ -1,0 +1,183 @@
+body{
+    font-family: helvetica;
+    color:white;
+    width: auto;
+    margin:0 auto;
+}
+
+
+
+/******************************************************
+                MASTHEAD
+******************************************************/
+header{
+    background-color:#777;
+    height:100px;
+    width:100%;
+}
+.logo{
+    float:left;
+    font-size:40px;
+    padding:27px 25px;
+}
+.links{
+    margin:auto 50px;
+    float:right;
+    font-size:25px;
+    
+}
+.links ul li{
+    display:inline;
+    list-style:none;
+    padding:0 5px;
+}
+
+/******************************************************
+                BODY
+******************************************************/
+.body{
+    margin:40px auto;
+    width:94%;
+}
+
+/******************************************************
+          Section 1: Larg box and Small box
+******************************************************/
+.sec_one{
+    font-size:40px;
+    height:500px;
+    
+}
+
+.large_box{
+    float:left;
+    text-align:center;
+    background-color:#777;
+    height:100%;
+    width:47%;
+    line-height:450px;
+}
+.small_box{
+    float:right;
+    height:100%;
+    width:47%;
+    text-align:center;
+    line-height:225px;
+}
+
+#sb_one{
+    height:44%;
+    width:100%;
+    background-color:#777;
+}
+#sb_two{
+    height:44%;
+    width:100%;
+    margin-top:10%;
+    background-color:#777;
+}
+
+
+/******************************************************
+     Section 2: Header Statement and Cards
+******************************************************/
+.sec_two{
+    clear:both;
+    float:left;
+    font-size:35px;
+    height:400px;
+    width:100%;
+    margin-top:40px;
+    margin-bottom:40px;
+}
+.header_statement{
+    background-color:#777;
+    text-align:center;
+    line-height:100px;
+    height:25%
+}
+.cards{
+    margin-top:40px;
+    height:65%;
+    text-align:center;
+    line-height:250px;
+}
+#card-one{
+    float:left;
+    height:100%;
+    width:32%;
+    background-color:#777;
+    
+}
+#card-two{
+    float:left;
+    background-color:#777;
+    height:100%;
+    width:32%;
+    margin-left:25px;
+}
+#card-three{
+    float:left;
+    background-color:#777;
+    height:100%;
+    width:32%;
+    margin-left:25px;
+}
+
+/******************************************************
+                Section 3: Tabs
+******************************************************/
+.sec_three{
+    margin-top:40px;
+    clear:both;
+    height:500px;
+    width:100%;
+    font-size:25px;
+}
+.tabs{
+    height:10%;
+}
+.tabs div{
+    float:left;
+    line-height:50px;
+    text-align:center;
+    background-color:#777;
+    height:100%;
+    width:24.9%;
+}
+.mar_left{
+    margin-left:.1%;
+}
+
+
+.paragraphs{
+    clear:both;
+    margin-top:1px;
+    height:89%;
+    width:100%;
+    background-color:#777;
+    text-align:center;
+    line-height:400px;
+}
+
+
+
+
+/******************************************************
+                FOOTER
+******************************************************/
+footer{
+    clear:both;
+    height:100px;
+    background-color:#777;
+    font-size:30px;
+    line-height:100px;
+    padding:0 20px;
+}
+.copyrights{
+    float:left;
+    
+}
+.foot_link{
+    float:right;
+}

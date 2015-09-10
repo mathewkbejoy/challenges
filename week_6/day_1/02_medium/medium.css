@@ -1,0 +1,39 @@
+body{
+    
+}
+div{
+    position:absolute;
+    display:inline-block;
+    height:150px;
+    width:150px;
+    margin:auto;
+}
+.red{
+    
+    top:10px;
+    left:10px;
+    border-radius:100% 0% 0% 0%;
+    background-color:red;
+    
+}
+.yellow{
+    top:10px;
+    left:161px;
+    border-radius:0% 100% 0% 0%;
+    background-color:yellow;
+    
+}
+.blue{
+    top:161px;
+    left:10px;
+    border-radius:0% 0% 0% 100%;
+    background-color:blue;
+    
+}
+.green{
+    top:161px;
+    left:161px;
+    border-radius:0% 0% 100% 0%;
+    background-color:green;
+    
+}

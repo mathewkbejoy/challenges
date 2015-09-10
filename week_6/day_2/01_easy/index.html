@@ -13,4 +13,14 @@
 -->
 <script>
     // Code here
+    var name = prompt("What's your first and last name?");
+    document.writeln(name);
+    var rname;
+    for(var i = name.length-1; i >= 0; i--){
+        console.log(i);
+        console.log(name[i]);
+        rname+= name[i];
+    }
+    console.log(rname);
+    document.write(rname);
 </script>

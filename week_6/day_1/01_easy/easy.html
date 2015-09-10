@@ -1,7 +1,5 @@
-<!-- Create a Web Page --> 
-
+<!-- Create a Web Page -->
 <!-- Instructions:
-
     - build out the web page seen in the image 'full-page.png' (*you can start with the html from exercise 5 and build off of there)
 
     - the background grey color is #777
@@ -13,5 +11,56 @@
     - add an image of your choosing to the "large box"
 
     - make the masthead stick to the top of the screen when you scroll down
-
 -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="easy.css"/>
+    </head>
+    <body>
+        <header>
+            <div class="logo">Logo</div>
+            <div class="links">
+                <ul>
+                    <li><a>Link-1</a></li>
+                    <li><a>Link-2</a></li>
+                    <li><a>Link-3</a></li>
+                    <li><a>Link-4</a></li>
+                    <li><a>Link-5</a></li>
+                </ul>
+                
+            </div>
+        </header>
+        <section class="body">
+            <section class="sec_one">
+                <div class="large_box">Large Box</div>
+                <div class="small_box">
+                    <div id="sb_one">Small Box #1</div>
+                    <div id="sb_two">Small Box #2</div>
+                </div>
+            </section>
+            <section class="sec_two">
+                <div class="header_statement">Header Statement</div>
+                <div class="cards">
+                    <div id="card-one">Card #1</div>
+                    <div id="card-two">Card #2</div>
+                    <div id="card-three">Card #3</div>
+                </div>
+            </section>
+            <section class="sec_three">
+                <div class="tabs">
+                    <div>Tab 1</div>
+                    <div class="mar_left">Tab 2</div>
+                    <div class="mar_left">Tab 3</div>
+                    <div class="mar_left">Tab 4</div>
+                </div>
+                <div class="paragraphs">Paragraphs</div>
+            </section>
+        </section>
+        <footer>
+            <div class="copyrights">Copyright</div>
+            <div class="foot_link">Links</div>
+        </footer>
+    </body>
+</html>
