@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JS exercise #1</title>
+  <style type="text/css">
+    .hide {
+      display: none;
+    }
+    .left {
+      float: left;
+    }
+    .right {
+      float: right;
+    }
+    .clear {
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <div style="width: 600px;margin: 0 auto;">
+    <h1 style="margin-bottom:5px">charles dickinson must die</h1>
+    <h2 style="margin-top: 0">...the game!</h2>
+    <div style="margin: 0 auto;text-align:center">
+      <button id="reset">RESET</button><br>
+      NUM RESETS: <span id="num-resets">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="left">
+      <h2>
+        ANDREW JACKSON
+      </h2>
+      <div class="hits">
+        SHOTS FIRED: <span id="andrew-numshots">0</span><br>
+        NUM HITS: <span id="andrew-numhits">0</span>
+      </div>
+      <div>
+        <button id="andrew-shoot">FIRE</button>
+      </div>
+    </div>
+    <div class="right">
+      <h2>
+        CHARLES DICKINSON
+      </h2>
+      <div class="hits">
+        SHOTS FIRED: <span id="charles-numshots">0</span><br>
+        NUM HITS: <span id="charles-numhits">0</span>
+      </div>
+      <div>
+        <button id="charles-shoot">FIRE</button>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <script src="duel.js"></script>
+</body>
+</html>
