@@ -33,3 +33,58 @@
  * - ???
  * - Profit!
  */
+ 
+ jQuery(function($){
+     var resetCounter = 0, aJackShots = 0, aJackHits = 0, cDickShots = 0, cDickHits = 0;
+     function randomBGColor(){
+         var letters = ['A','B','C','D','E','F'];
+         var color ="#";
+         for(var i = 0; i < 3; i++){
+             color+=letters[Math.floor(Math.random()*letters.length)];
+         }
+         $("body").css({"background-color":color});
+      
+     }
+     function isLucky(){
+      return ((Math.floor(Math.random()*10)+1) <= 7);
+     }
+     
+     $("#reset").on('click',function(){
+         resetCounter++;
+         aJackShots = 0;
+         aJackHits = 0;
+         cDickShots = 0;
+         cDickHits = 0;
+         $("#num-resets").text(resetCounter);
+         $("#andrew-numshots").text(aJackShots);
+         $("#charles-numhits").text(cDickHits);
+         $("#charles-numshots").text(aJackShots);
+         $("#andrew-numhits").text(cDickHits);
+         randomBGColor();
+         
+     });
+     
+     $("#andrew-shoot").on('click',function(){
+        document.getElementById('audio').play();
+        aJackShots++;
+        if(isLucky()){
+         cDickHits++;
+        }
+        $("#andrew-numshots").text(aJackShots);
+        $("#charles-numhits").text(cDickHits);
+        randomBGColor();
+     });
+     
+     $("#charles-shoot").on('click',function(){
+      document.getElementById('audio').play();
+      cDickShots++;   
+      if(isLucky()){
+         aJackHits++;
+        }
+        $("#charles-numshots").text(cDickShots);
+        $("#andrew-numhits").text(aJackHits);
+        randomBGColor();
+     });
+     
+     
+ });

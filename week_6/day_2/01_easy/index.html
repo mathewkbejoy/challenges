@@ -13,14 +13,15 @@
 -->
 <script>
     // Code here
-    var name = prompt("What's your first and last name?");
-    document.writeln(name);
-    var rname;
-    for(var i = name.length-1; i >= 0; i--){
-        console.log(i);
-        console.log(name[i]);
-        rname+= name[i];
+    var name = prompt("What's your first and last name?","enter name here");
+    document.write(name);
+    function reverse(name){
+        var rname;
+        for(var i = name.length-1; i >= 0; i--){
+            rname+= name[i];
+        }
+        return rname;
     }
-    console.log(rname);
-    document.write(rname);
+    
+    console.log(reverse(name));
 </script>

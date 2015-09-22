@@ -13,8 +13,17 @@
  * this function adds an image to the page
  * @param {String} name an image filename
  */
+ 
+ 
 function addImage(name) {
   var img = document.createElement('img');
   img.src = name;
   document.getElementById('image-box').appendChild(img);
 }
+
+setInterval(function(){
+  var rand = Math.floor(Math.random()*5)+1;
+  console.log(rand);
+  addImage("img"+rand+".jpg");
+},2500);
+

@@ -9,19 +9,36 @@
 
 var saveButton = document.getElementById('save-button');
 var loadButton = document.getElementById('load-button');
-
 /**
  * Gets the text from the element for you
  * @return {String}
  */
 function getText() {
+
   return document.getElementById('save-me').value;
 }
-
 /**
  * Puts different text
  * @param {String} text the stuff you want to put in the box
  */
 function setText(text) {
+
   return document.getElementById('save-me').value = text;
 }
+var count=0;
+saveButton.onclick=function(){
+  console.log("save"+count);
+  localStorage.setItem("save"+count,getText());
+  count++;
+};
+
+loadButton.onclick=function(){
+  var allItems;
+  for(var item in localStorage){
+    allItems = allItems + localStorage.getItem(item);
+    setText(allItems);
+  }
+};
+
+localStorage.clear();
+
