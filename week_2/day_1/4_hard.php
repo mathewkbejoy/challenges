@@ -27,24 +27,17 @@
 
 
                 // code goes here ...
-                $three = 0;
-                $six = 0;
                 for($i = 1; $i <= 100; $i++){
-                    if($i%3 == 0){
-                        $three++;
-                        echo "{$i}, ";
+                    if($i%3 === 0){
+                        $three[] = $i;
                     }
-                    
+                    if($i%6 === 0){
+                        $six[] = $i;
+                    }                    
                 }
-                echo "<br/>";
-                for($i = 1; $i <= 100; $i++){
-                    if($i%6 == 0){
-                        $six++;
-                        echo "{$i}, ";
-                    }
-                }
-
-                echo "<br /> {$three} numbers divisible by 3 and {$six} numbers divisible by 6";
+                
+                echo implode(',',$three)."<br/>".implode(',',$six)."<br/>Divisible by 3 = ".count($three)."<br/>Divisible by 6 = ".count($six);
+            
 
             ?>
         </p>

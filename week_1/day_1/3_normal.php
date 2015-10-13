@@ -29,7 +29,7 @@
 	         ];
 
 	         // code goes here
-	         echo $nameToColorArray[$name];
+	         echo "Name: ".$name." Color:".$nameToColorArray[$name];
 	         
           ?>
         </p>

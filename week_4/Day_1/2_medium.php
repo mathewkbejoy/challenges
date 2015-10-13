@@ -38,7 +38,7 @@
         protected $total_after_tax;
         protected $tax;
         
-        function addItem($item){
+        function addItem(Item $item){
             $this->items[] = $item;
         }
         

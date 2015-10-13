@@ -56,7 +56,7 @@
                         "NC_SC" => array("SlowNet" => 29.99,"FastNet" => 59.99));
         
         function getBundlesByZip($zip_code){
-            $possible_bundles;
+            $possible_bundles = array();
             //gets the state by looking at the first 2 number
             $state = intval(substr(strval($zip_code),0,2));
             $state_special_tv = "Rest_of_US";

@@ -29,16 +29,24 @@
           	 'November'
           	];
           	
-          	$monthArray = ["April", "September", "December"];
+          	for($i =0; $i < 12; $i++){
+          	    
+          	    $monthArray[date('m',time()+($i*4.3*7*24*60*60))] = date('F',time()+($i*4.3*7*24*60*60));
+          	}
+          	ksort($monthArray);
+          	
+          	//$monthArray = ["April", "September", "December"];
 
           	// code goes here ...
           	foreach($monthArray as $month)
           	{
           	    if(!in_array($month, $monthExcludeArray)){
-          	        echo $month;
+          	        echo $month.'<br/>';
           	    }
-          	    
           	}
+          	
+         
+          	
           ?>
         </p>
 	</body>
